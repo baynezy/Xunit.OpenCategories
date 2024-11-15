@@ -1,49 +1,48 @@
 using System;
 using System.Collections.Generic;
-using Xunit.v3;
 
-namespace Xunit.OpenCategories
+namespace Xunit.OpenCategories;
+
+/// <summary>
+/// Attribute to specify a component for a test class or method.
+/// </summary>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class ComponentAttribute : BaseAttribute
 {
     /// <summary>
-    /// Attribute to specify a component for a test class or method.
+    /// Initializes a new instance of the <see cref="ComponentAttribute"/> class.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class ComponentAttribute : Attribute, ITraitAttribute
+    public ComponentAttribute()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentAttribute"/> class.
-        /// </summary>
-        public ComponentAttribute()
-        {
-        }
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentAttribute"/> class with a specified component name.
-        /// </summary>
-        /// <param name="name">The name of the component.</param>
-        public ComponentAttribute(string name)
-        {
-            ComponentName = name;
-        }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ComponentAttribute"/> class with a specified component name.
+    /// </summary>
+    /// <param name="name">The name of the component.</param>
+    public ComponentAttribute(string name)
+    {
+        ComponentName = name;
+    }
 
-        /// <summary>
-        /// Gets the name of the component.
-        /// </summary>
-        public string ComponentName { get; }
+    /// <summary>
+    /// Gets the name of the component.
+    /// </summary>
+    public string ComponentName { get; }
 
-        /// <inheritdoc/>
-        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+    /// <inheritdoc />
+    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
+    {
+        var category = new KeyValuePair<string, string>("Category", "Component");
+        traits.Add(category);
+    }
+
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        if (!string.IsNullOrWhiteSpace(ComponentName))
         {
-            var traits = new List<KeyValuePair<string, string>>();
-            var category = new KeyValuePair<string, string>("Category", "Component");
-            traits.Add(category);
-            
-            if (!string.IsNullOrWhiteSpace(ComponentName))
-            {
-                traits.Add(new KeyValuePair<string, string>("Component", ComponentName));
-            }
-            
-            return traits;
+            traits.Add(new KeyValuePair<string, string>("Component", ComponentName));
         }
     }
 }

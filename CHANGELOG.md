@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Upgraded to .NET 8.0
+- Migrated to xUnit v3
+
 ## [1.2.0.5] - 2025-01-01
 
 ### Added
