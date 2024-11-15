@@ -42,16 +42,12 @@ public class KnownBugAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Id))
-        {
-            traits.Add(new KeyValuePair<string, string>("KnownBug", Id));
-        }
+        AddOptionalTrait(traits, "KnownBug", Id);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "KnownBug");
-        traits.Add(category);
+        AddCategory(traits, "KnownBug");
     }
 }

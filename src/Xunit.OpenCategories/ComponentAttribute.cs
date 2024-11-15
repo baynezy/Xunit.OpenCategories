@@ -33,16 +33,12 @@ public class ComponentAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "Component");
-        traits.Add(category);
+        AddCategory(traits, "Component");
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(ComponentName))
-        {
-            traits.Add(new KeyValuePair<string, string>("Component", ComponentName));
-        }
+        AddOptionalTrait(traits, "Component", ComponentName);
     }
 }

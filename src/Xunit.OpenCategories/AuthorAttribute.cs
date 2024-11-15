@@ -29,9 +29,6 @@ public class AuthorAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(AuthorName))
-        {
-            traits.Add(new KeyValuePair<string, string>("Author", AuthorName));
-        }
+        AddOptionalTrait(traits,"Author", AuthorName);
     }
 }

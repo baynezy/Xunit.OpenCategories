@@ -15,6 +15,6 @@ public class SnapshotTestsAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        traits.Add(new KeyValuePair<string, string>("Category", "SnapshotTest"));
+        AddCategory(traits, "SnapshotTest");
     }
 }

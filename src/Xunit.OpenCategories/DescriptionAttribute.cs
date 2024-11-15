@@ -29,9 +29,6 @@ public class DescriptionAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Description))
-        {
-            traits.Add(new KeyValuePair<string, string>("Description", Description));
-        }
+        AddOptionalTrait(traits, "Description", Description);
     }
 }

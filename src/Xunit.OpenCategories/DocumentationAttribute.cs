@@ -46,16 +46,12 @@ public class DocumentationAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(WorkItemId))
-        {
-            traits.Add(new KeyValuePair<string, string>("Documentation", WorkItemId));
-        }
+        AddOptionalTrait(traits, "Documentation", WorkItemId);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "Documentation");
-        traits.Add(category);
+        AddCategory(traits, "Documentation");
     }
 }

@@ -39,4 +39,34 @@ public abstract class BaseAttribute : Attribute, ITraitAttribute
     protected virtual void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
     }
+
+    /// <summary>
+    /// Adds an optional trait to the provided list.
+    /// </summary>
+    /// <param name="traits">The list to which the trait will be added.</param>
+    /// <param name="name">The name of the trait.</param>
+    /// <param name="value">The value of the trait.</param>
+    protected static void AddOptionalTrait(List<KeyValuePair<string, string>> traits, string name, string value)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            traits.Add(new KeyValuePair<string, string>(name, value));
+        }
+    }
+
+    private static void AddMandatoryTrait(List<KeyValuePair<string, string>> traits, string name, string value)
+    {
+        var category = new KeyValuePair<string, string>(name, value);
+        traits.Add(category);
+    }
+
+    /// <summary>
+    /// Adds a category trait to the provided list.
+    /// </summary>
+    /// <param name="traits">The list to which the trait will be added.</param>
+    /// <param name="value">The value of the trait.</param>
+    protected static void AddCategory(List<KeyValuePair<string, string>> traits, string value)
+    {
+        AddMandatoryTrait(traits,"Category", value);
+    }
 }

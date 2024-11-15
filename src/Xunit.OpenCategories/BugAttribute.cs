@@ -45,16 +45,12 @@ public class BugAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "Bug");
-        traits.Add(category);
+        AddOptionalTrait(traits, "Bug", Id);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Id))
-        {
-            traits.Add(new KeyValuePair<string, string>("Bug", Id));
-        }
+        AddCategory(traits, "Bug");
     }
 }

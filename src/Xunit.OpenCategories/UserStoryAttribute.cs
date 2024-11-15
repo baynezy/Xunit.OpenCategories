@@ -45,16 +45,12 @@ public class UserStoryAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Identifier))
-        {
-            traits.Add(new KeyValuePair<string, string>("UserStory", Identifier));
-        }
+        AddOptionalTrait(traits, "UserStory", Identifier);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "UserStory");
-        traits.Add(category);
+        AddCategory(traits, "UserStory");
     }
 }

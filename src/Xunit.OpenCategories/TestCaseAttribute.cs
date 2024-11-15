@@ -42,16 +42,13 @@ public class TestCaseAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(TestCaseId))
-        {
-            traits.Add(new KeyValuePair<string, string>("TestCase", TestCaseId));
-        }
+        AddOptionalTrait(traits, "TestCase", TestCaseId);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "TestCase");
-        traits.Add(category);
+        AddCategory(traits, "TestCase");
+
     }
 }

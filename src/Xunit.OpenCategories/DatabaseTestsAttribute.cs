@@ -15,6 +15,6 @@ public class DatabaseTestsAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        traits.Add(new KeyValuePair<string, string>("Category", "DatabaseTest"));
+        AddCategory(traits, "DatabaseTest");
     }
 }

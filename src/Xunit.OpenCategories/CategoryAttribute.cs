@@ -29,9 +29,6 @@ public class CategoryAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Name))
-        {
-            traits.Add(new KeyValuePair<string, string>("Category", Name));
-        }
+        AddOptionalTrait(traits, "Category", Name);
     }
 }

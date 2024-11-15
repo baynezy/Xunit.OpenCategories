@@ -45,16 +45,12 @@ public class LocalTestAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Id))
-        {
-            traits.Add(new KeyValuePair<string, string>("LocalTest", Id));
-        }
+        AddOptionalTrait(traits, "LocalTest", Id);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "LocalTest");
-        traits.Add(category);
+        AddCategory(traits, "LocalTest");
     }
 }

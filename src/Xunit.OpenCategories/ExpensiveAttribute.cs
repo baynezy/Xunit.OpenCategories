@@ -15,6 +15,6 @@ public class ExpensiveAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        traits.Add(new KeyValuePair<string, string>("Category", "Expensive"));
+        AddCategory(traits, "Expensive");
     }
 }

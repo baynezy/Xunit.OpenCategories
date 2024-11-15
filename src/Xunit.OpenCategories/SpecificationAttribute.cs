@@ -45,16 +45,12 @@ public class SpecificationAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Identifier))
-        {
-            traits.Add(new KeyValuePair<string, string>("Specification", Identifier));
-        }
+        AddOptionalTrait(traits, "Specification", Identifier);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "Specification");
-        traits.Add(category);
+        AddCategory(traits, "Specification");
     }
 }

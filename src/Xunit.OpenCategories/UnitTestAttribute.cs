@@ -45,16 +45,12 @@ public class UnitTestAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Identifier))
-        {
-            traits.Add(new KeyValuePair<string, string>("UnitTest", Identifier));
-        }
+        AddOptionalTrait(traits, "UnitTest", Identifier);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "UnitTest");
-        traits.Add(category);
+        AddCategory(traits, "UnitTest");
     }
 }

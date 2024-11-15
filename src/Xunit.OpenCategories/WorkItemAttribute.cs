@@ -42,16 +42,12 @@ public class WorkItemAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "WorkItem");
-        traits.Add(category);
+        AddOptionalTrait(traits, "WorkItem", WorkItemId);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(WorkItemId))
-        {
-            traits.Add(new KeyValuePair<string, string>("WorkItem", WorkItemId));
-        }
+        AddCategory(traits, "WorkItem");
     }
 }

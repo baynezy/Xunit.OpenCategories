@@ -45,16 +45,12 @@ public class FeatureAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Identifier))
-        {
-            traits.Add(new KeyValuePair<string, string>("Feature", Identifier));
-        }
+        AddOptionalTrait(traits, "Feature", Identifier);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "Feature");
-        traits.Add(category);
+        AddCategory(traits, "Feature");
     }
 }

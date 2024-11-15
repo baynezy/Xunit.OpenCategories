@@ -45,16 +45,12 @@ public class SystemTestAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        if (!string.IsNullOrWhiteSpace(Id))
-        {
-            traits.Add(new KeyValuePair<string, string>("SystemTest", Id));
-        }
+        AddOptionalTrait(traits, "SystemTest", Id);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        var category = new KeyValuePair<string, string>("Category", "SystemTest");
-        traits.Add(category);
+        AddCategory(traits, "SystemTest");
     }
 }

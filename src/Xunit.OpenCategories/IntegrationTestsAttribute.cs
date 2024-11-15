@@ -15,6 +15,6 @@ public class IntegrationTestsAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        traits.Add(new KeyValuePair<string, string>("Category", "IntegrationTest"));
+        AddCategory(traits, "IntegrationTest");
     }
 }
