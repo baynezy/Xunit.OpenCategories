@@ -1,8 +1,6 @@
-﻿using FluentAssertions;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
-namespace Xunit.OpenCategories.UnitTests;
-
-public class KnownBugAttributeTests
+public class KnownBugAttributeTests : OptionalIdTests<KnownBugAttribute>
 {
     [Fact]
     [KnownBug]
@@ -35,4 +33,9 @@ public class KnownBugAttributeTests
             .And.BeDecoratedWith<KnownBugAttribute>()
             .Which.Id.Should().Be("666 a");
     }
+
+    protected override string AttributeCategory => "KnownBug";
+    protected override string PropertyName => "KnownBug";
+    protected override KnownBugAttribute CreateAttributeWithStringProperty(string? value) => new(value);
+    protected override KnownBugAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }
