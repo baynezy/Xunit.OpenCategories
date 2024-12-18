@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// This attribute can be applied to both classes and methods, and it supports multiple usages.
     /// </remarks>
-    [TraitDiscoverer(DescriptionDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class DescriptionAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -26,5 +26,18 @@ namespace Xunit.OpenCategories
         /// Gets the description of the test.
         /// </summary>
         public string Description { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            
+            if (!string.IsNullOrWhiteSpace(Description))
+            {
+                traits.Add(new KeyValuePair<string, string>("Description", Description));
+            }
+            
+            return traits;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class UnitTestAttributeTests
+public class UnitTestAttributeTests : OptionalIdTests<UnitTestAttribute>
 {
     [Fact]
     [UnitTest]
@@ -35,4 +35,9 @@ public class UnitTestAttributeTests
             .And.BeDecoratedWith<UnitTestAttribute>()
             .Which.Identifier.Should().Be("999");
     }
+
+    protected override string AttributeCategory => "UnitTest";
+    protected override string PropertyName => "UnitTest";
+    protected override UnitTestAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override UnitTestAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

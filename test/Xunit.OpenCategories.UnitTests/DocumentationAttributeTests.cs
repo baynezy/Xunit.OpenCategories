@@ -1,8 +1,9 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class DocumentationAttributeTests
+public class DocumentationAttributeTests : OptionalIdTests<DocumentationAttribute>
 {
     [Fact]
     [Documentation]
@@ -35,4 +36,9 @@ public class DocumentationAttributeTests
             .And.BeDecoratedWith<DocumentationAttribute>()
             .Which.WorkItemId.Should().Be("666 a");
     }
+
+    protected override string AttributeCategory => "Documentation";
+    protected override string PropertyName => "Documentation";
+    protected override DocumentationAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override DocumentationAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

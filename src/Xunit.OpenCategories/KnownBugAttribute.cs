@@ -1,13 +1,13 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
     /// <summary>
     /// For failing tests relating to known bugs that should not fail a build.
     /// </summary>
-    [TraitDiscoverer(KnownBugDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class KnownBugAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -38,6 +38,21 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the ID of the known bug associated with the test.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "KnownBug");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(Id))
+            {
+                traits.Add(new KeyValuePair<string, string>("KnownBug", Id));
+            }
+            
+            return traits;
+        }
     }
 }

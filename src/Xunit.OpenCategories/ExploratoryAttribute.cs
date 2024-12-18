@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -7,8 +8,7 @@ namespace Xunit.OpenCategories
     /// For tests that have an exploratory purpose like trying out an unknown API. Not necessarily relating to your own code.
     /// </summary>
     /// <example>Trying out LINQ for the first time, writing a piece of code to understand IEnumerable.Take and Skip.</example>
-    [TraitDiscoverer(ExploratoryDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class ExploratoryAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -39,6 +39,21 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the work item ID associated with the exploratory test.
         /// </summary>
-        public string WorkItemId { get; private set; }
+        public string WorkItemId { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "Exploratory");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(WorkItemId))
+            {
+                traits.Add(new KeyValuePair<string, string>("Exploratory", WorkItemId));
+            }
+            
+            return traits;
+        }
     }
 }

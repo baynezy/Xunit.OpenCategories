@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// Specification tests are used to verify that the implementation meets the specified requirements.
     /// </remarks>
-    [TraitDiscoverer(SpecificationDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class SpecificationAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -41,6 +41,21 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the identifier associated with the specification test.
         /// </summary>
-        public string Identifier { get; private set; }
+        public string Identifier { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "Specification");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(Identifier))
+            {
+                traits.Add(new KeyValuePair<string, string>("Specification", Identifier));
+            }
+            
+            return traits;
+        }
     }
 }

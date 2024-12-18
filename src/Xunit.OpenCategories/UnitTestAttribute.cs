@@ -1,5 +1,6 @@
 using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// Unit tests are used to verify the functionality of a specific section of code.
     /// </remarks>
-    [TraitDiscoverer(UnitTestDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class UnitTestAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -41,6 +41,20 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the identifier associated with the unit test.
         /// </summary>
-        public string Identifier { get; private set; }
+        public string Identifier { get; }
+
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "UnitTest");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(Identifier))
+            {
+                traits.Add(new KeyValuePair<string, string>("UnitTest", Identifier));
+            }
+            
+            return traits;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class TestCaseAttributeTests
+public class TestCaseAttributeTests : OptionalIdTests<TestCaseAttribute>
 {
     [Fact]
     [TestCase]
@@ -35,4 +35,9 @@ public class TestCaseAttributeTests
             .And.BeDecoratedWith<TestCaseAttribute>()
             .Which.TestCaseId.Should().Be("999");
     }
+
+    protected override string AttributeCategory => "TestCase";
+    protected override string PropertyName => "TestCase";
+    protected override TestCaseAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override TestCaseAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

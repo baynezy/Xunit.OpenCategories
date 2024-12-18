@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// This attribute can be applied to both classes and methods, and it supports multiple usages.
     /// </remarks>
-    [TraitDiscoverer(CategoryDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class CategoryAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -25,6 +25,18 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the name of the category.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
+
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                traits.Add(new KeyValuePair<string, string>("Category", Name));
+            }
+            
+            return traits;
+        }
     }
 }

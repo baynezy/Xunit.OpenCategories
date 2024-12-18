@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// System tests are used to verify the complete and integrated software system.
     /// </remarks>
-    [TraitDiscoverer(SystemTestDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class SystemTestAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -36,12 +36,25 @@ namespace Xunit.OpenCategories
         /// </summary>
         public SystemTestAttribute()
         {
-
         }
 
         /// <summary>
         /// Gets the identifier associated with the system test.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; }
+
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string, string>("Category", "SystemTest");
+            traits.Add(category);
+
+            if (!string.IsNullOrWhiteSpace(Id))
+            {
+                traits.Add(new KeyValuePair<string, string>("SystemTest", Id));
+            }
+
+            return traits;
+        }
     }
 }

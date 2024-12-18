@@ -1,17 +1,17 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// For annotating tests that have a mainly documentative purpose, as sometimes a piece of code says more
+    /// For annotating tests that have a mainly documentary purpose, as sometimes a piece of code says more
     /// than a 1000 words API Documentation.
     /// </summary>
     /// <remarks>
     /// This attribute can be applied to both classes and methods, and it supports multiple usages.
     /// </remarks>
-    [TraitDiscoverer(DocumentationDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class DocumentationAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -42,6 +42,21 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the work item ID associated with the documentation.
         /// </summary>
-        public string WorkItemId { get; private set; }
+        public string WorkItemId { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "Documentation");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(WorkItemId))
+            {
+                traits.Add(new KeyValuePair<string, string>("Documentation", WorkItemId));
+            }
+            
+            return traits;
+        }
     }
 }

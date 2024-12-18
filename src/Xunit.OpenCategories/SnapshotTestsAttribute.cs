@@ -5,20 +5,20 @@ using Xunit.v3;
 namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// Attribute to specify that a test is expensive in terms of resources or time.
+    /// Attribute to mark a test as a snapshot test.
     /// </summary>
     /// <remarks>
-    /// This attribute can be applied to both classes and methods, and it supports multiple usages.
+    /// Snapshot tests are used to verify that the output of a function matches the expected output.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class ExpensiveAttribute : Attribute, ITraitAttribute
+    public class SnapshotTestsAttribute : Attribute, ITraitAttribute
     {
         /// <inheritdoc/>
         public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
         {
             return new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("Category", "Expensive")
+                new KeyValuePair<string, string>("Category", "SnapshotTest")
             };
         }
     }

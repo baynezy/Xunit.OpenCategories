@@ -1,5 +1,6 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
+using Xunit.v3;
 
 namespace Xunit.OpenCategories
 {
@@ -9,8 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// This attribute can be applied to both classes and methods, and it supports multiple usages.
     /// </remarks>
-    [TraitDiscoverer(BugDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class BugAttribute : Attribute, ITraitAttribute
     {
         /// <summary>
@@ -41,6 +41,21 @@ namespace Xunit.OpenCategories
         /// <summary>
         /// Gets the bug ID.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; }
+
+        /// <inheritdoc/>
+        public IReadOnlyCollection<KeyValuePair<string, string>> GetTraits()
+        {
+            var traits = new List<KeyValuePair<string, string>>();
+            var category = new KeyValuePair<string,string>("Category", "Bug");
+            traits.Add(category);
+            
+            if (!string.IsNullOrWhiteSpace(Id))
+            {
+                traits.Add(new KeyValuePair<string, string>("Bug", Id));
+            }
+            
+            return traits;
+        }
     }
 }
