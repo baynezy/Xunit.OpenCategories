@@ -45,10 +45,10 @@ public class ComponentsDiscovererTests : BaseDiscovererTests<ComponentsDiscovere
     }
 
     [Fact]
-    public void GetTraits_ReturnsEmpty_WhenComponentsNameIsNull()
+    public void GetTraits_ReturnsEmpty_WhenComponentNamesIsNull()
     {
         // arrange
-        MockTraitAttribute.GetNamedArgument<string[]>("ComponentsName").Returns([null]);
+        MockTraitAttribute.GetNamedArgument<string[]>("ComponentNames").Returns([null]);
 
         // act
         var traits = Discoverer.GetTraits(MockTraitAttribute);
@@ -58,10 +58,10 @@ public class ComponentsDiscovererTests : BaseDiscovererTests<ComponentsDiscovere
     }
 
     [Fact]
-    public void GetTraits_ReturnsEmpty_WhenComponentNameIsWhitespace()
+    public void GetTraits_ReturnsEmpty_WhenComponentNamesIsWhitespace()
     {
         // arrange
-        MockTraitAttribute.GetNamedArgument<string[]>("ComponentsName").Returns(["   "]);
+        MockTraitAttribute.GetNamedArgument<string[]>("ComponentNames").Returns(["   "]);
 
         // act
         var traits = Discoverer.GetTraits(MockTraitAttribute);
