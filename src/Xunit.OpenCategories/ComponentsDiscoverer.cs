@@ -5,7 +5,7 @@ using Xunit.Sdk;
 namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// Discovers the traits for the <see cref="ComponentAttribute"/>.
+    /// Discovers the traits for the <see cref="ComponentsAttribute"/>.
     /// </summary>
     public class ComponentsDiscoverer : ITraitDiscoverer
     {
