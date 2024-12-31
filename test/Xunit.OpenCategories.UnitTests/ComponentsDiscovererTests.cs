@@ -31,7 +31,7 @@ public class ComponentsDiscovererTests : BaseDiscovererTests<ComponentsDiscovere
     }
 
     [Fact]
-    public void GetTraits_ReturnsComponentsName_WhenMultipleComponentNamesAreProvided()
+    public void GetTraits_ReturnsComponentsNames_WhenMultipleComponentNamesAreProvided()
     {
         // arrange
         MockTraitAttribute.GetNamedArgument<string[]>("ComponentNames").Returns(["UI", "Database"]);
