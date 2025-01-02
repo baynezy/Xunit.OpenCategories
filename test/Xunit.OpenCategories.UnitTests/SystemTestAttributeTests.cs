@@ -2,7 +2,7 @@
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class SystemTestAttributeTests
+public class SystemTestAttributeTests : OptionalIdTests<SystemTestAttribute>
 {
     [Fact]
     [SystemTest]
@@ -35,4 +35,9 @@ public class SystemTestAttributeTests
             .And.BeDecoratedWith<SystemTestAttribute>()
             .Which.Id.Should().Be("666 a");
     }
+
+    protected override string AttributeCategory => "SystemTest";
+    protected override string PropertyName => "SystemTest";
+    protected override SystemTestAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override SystemTestAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

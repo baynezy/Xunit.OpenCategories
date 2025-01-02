@@ -2,7 +2,7 @@
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class UserStoryAttributeTests
+public class UserStoryAttributeTests : OptionalIdTests<UserStoryAttribute>
 {
     [Fact]
     [UserStory]
@@ -35,4 +35,9 @@ public class UserStoryAttributeTests
             .And.BeDecoratedWith<UserStoryAttribute>()
             .Which.Identifier.Should().Be("999");
     }
+
+    protected override string AttributeCategory => "UserStory";
+    protected override string PropertyName => "UserStory";
+    protected override UserStoryAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override UserStoryAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

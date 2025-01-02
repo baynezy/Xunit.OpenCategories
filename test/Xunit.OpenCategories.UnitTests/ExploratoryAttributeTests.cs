@@ -2,7 +2,7 @@
 
 namespace Xunit.OpenCategories.UnitTests;
 
-public class ExploratoryAttributeTests
+public class ExploratoryAttributeTests : OptionalIdTests<ExploratoryAttribute>
 {
     [Fact]
     [Exploratory]
@@ -35,4 +35,9 @@ public class ExploratoryAttributeTests
             .And.BeDecoratedWith<ExploratoryAttribute>()
             .Which.WorkItemId.Should().Be("666 a");
     }
+
+    protected override string AttributeCategory => "Exploratory";
+    protected override string PropertyName => "Exploratory";
+    protected override ExploratoryAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override ExploratoryAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }
