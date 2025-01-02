@@ -40,6 +40,17 @@ jobs:
         target: Build
         arguments: |
           versionNumber: ${{inputs.version}}
+    - name: Run tests
+      uses: cake-build/cake-action@v2
+      with:
+        target: Test
+        arguments: |
+          testFilter: "UnitTests"
+    - name: Publish Unit Test Results
+      if: ${{ github.actor != 'dependabot[bot]' }}
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      with:
+        files: "**/TestResults/*.xml"
     - name: Build NuGet Package
       uses: cake-build/cake-action@v2
       with:
