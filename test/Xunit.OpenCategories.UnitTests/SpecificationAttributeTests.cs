@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class SpecificationAttributeTests : OptionalIdTests<SpecificationAttribute>
 {
@@ -38,6 +36,6 @@ public class SpecificationAttributeTests : OptionalIdTests<SpecificationAttribut
 
     protected override string AttributeCategory => "Specification";
     protected override string PropertyName => "Specification";
-    protected override SpecificationAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override SpecificationAttribute CreateAttributeWithStringProperty(string? value) => new(value);
     protected override SpecificationAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

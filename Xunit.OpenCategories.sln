@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4B907854-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xunit.OpenCategories", "src\Xunit.OpenCategories\Xunit.OpenCategories.csproj", "{C82AD558-CEC5-463E-9CA3-451DF7D5F785}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xunit.OpenCategories.Test", "test\Xunit.OpenCategories.UnitTests\Xunit.OpenCategories.UnitTests.csproj", "{43D92733-FA44-4B93-8204-6AE5EC30F558}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF4C12C3-6C00-45C7-AC5A-5CFC49829E6D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -27,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunit.OpenCategories.v3.UnitTests", "test\Xunit.OpenCategories.v3.UnitTests\Xunit.OpenCategories.v3.UnitTests.csproj", "{006D9C54-6352-4131-A909-6E11FA5D5F2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunit.OpenCategories.UnitTests", "test\Xunit.OpenCategories.UnitTests\Xunit.OpenCategories.UnitTests.csproj", "{006D9C54-6352-4131-A909-6E11FA5D5F2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,18 +49,6 @@ Global
 		{C82AD558-CEC5-463E-9CA3-451DF7D5F785}.Release|x64.Build.0 = Release|Any CPU
 		{C82AD558-CEC5-463E-9CA3-451DF7D5F785}.Release|x86.ActiveCfg = Release|Any CPU
 		{C82AD558-CEC5-463E-9CA3-451DF7D5F785}.Release|x86.Build.0 = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|x64.Build.0 = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Debug|x86.Build.0 = Debug|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|x64.ActiveCfg = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|x64.Build.0 = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|x86.ActiveCfg = Release|Any CPU
-		{43D92733-FA44-4B93-8204-6AE5EC30F558}.Release|x86.Build.0 = Release|Any CPU
 		{006D9C54-6352-4131-A909-6E11FA5D5F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{006D9C54-6352-4131-A909-6E11FA5D5F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{006D9C54-6352-4131-A909-6E11FA5D5F2A}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -81,7 +67,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C82AD558-CEC5-463E-9CA3-451DF7D5F785} = {AE469D2E-EF21-4F07-B5B4-46BBC4061D10}
-		{43D92733-FA44-4B93-8204-6AE5EC30F558} = {4B907854-B08B-41DD-95CB-3D9358987AEA}
 		{006D9C54-6352-4131-A909-6E11FA5D5F2A} = {4B907854-B08B-41DD-95CB-3D9358987AEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

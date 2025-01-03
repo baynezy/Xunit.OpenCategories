@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class ComponentAttributeTests
 {
@@ -42,7 +39,7 @@ public class ComponentAttributeTests
     [InlineData("   ")]
     [InlineData("")]
     [InlineData(null)]
-    public void WhenComponentNameIsNullOrWhitespace_ThenReturnNoComponent(string componentName)
+    public void WhenComponentNameIsNullOrWhitespace_ThenReturnNoComponent(string? componentName)
     {
         // arrange
         var componentAttribute = new ComponentAttribute(componentName);
@@ -71,7 +68,7 @@ public class ComponentAttributeTests
     [InlineData("123")]
     [InlineData(null)]
     [InlineData("    ")]
-    public void WhenComponentNameIsProvided_ThenReturnsCategoryComponent(string componentName)
+    public void WhenComponentNameIsProvided_ThenReturnsCategoryComponent(string? componentName)
     {
         // arrange
         var componentAttribute = new ComponentAttribute(componentName);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Bogus;
-using FluentAssertions;
-using Xunit.v3;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute>
     where TAttribute : Attribute, ITraitAttribute, new()
@@ -72,7 +66,7 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
     [InlineData("123")]
     [InlineData(null)]
     [InlineData("    ")]
-    public void WhenIdIsProvided_ThenReturnCategory(object id)
+    public void WhenIdIsProvided_ThenReturnCategory(object? id)
     {
         // arrange
         var idString = id?.ToString();
@@ -86,6 +80,6 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
     }
 
     protected abstract string PropertyName { get; }
-    protected abstract TAttribute CreateAttributeWithStringProperty(string value);
+    protected abstract TAttribute CreateAttributeWithStringProperty(string? value);
     protected abstract TAttribute CreateAttributeWithStringProperty(long value);
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Bogus;
-using FluentAssertions;
-using Xunit.v3;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public abstract class StringPropertyOnlyTests<TAttribute>
     where TAttribute : Attribute, ITraitAttribute
@@ -55,5 +49,5 @@ public abstract class StringPropertyOnlyTests<TAttribute>
         traits.Count.Should().Be(0);
     }
 
-    protected abstract TAttribute CreateAttributeWithStringProperty(string value);
+    protected abstract TAttribute CreateAttributeWithStringProperty(string? value);
 }

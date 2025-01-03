@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class FeatureAttributeTests : OptionalIdTests<FeatureAttribute>
 {
@@ -40,6 +38,6 @@ public class FeatureAttributeTests : OptionalIdTests<FeatureAttribute>
 
     protected override string AttributeCategory => "Feature";
     protected override string PropertyName => "Feature";
-    protected override FeatureAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override FeatureAttribute CreateAttributeWithStringProperty(string? value) => new(value);
     protected override FeatureAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

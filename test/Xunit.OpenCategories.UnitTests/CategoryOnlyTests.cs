@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentAssertions;
-using Xunit.v3;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public abstract class CategoryOnlyTests<TAttribute> where TAttribute : Attribute, ITraitAttribute, new()
 {

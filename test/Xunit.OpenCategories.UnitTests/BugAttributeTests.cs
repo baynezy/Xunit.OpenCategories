@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class BugAttributeTests : OptionalIdTests<BugAttribute>
 {
@@ -38,6 +36,6 @@ public class BugAttributeTests : OptionalIdTests<BugAttribute>
 
     protected override string AttributeCategory => "Bug";
     protected override string PropertyName => "Bug";
-    protected override BugAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override BugAttribute CreateAttributeWithStringProperty(string? value) => new(value);
     protected override BugAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

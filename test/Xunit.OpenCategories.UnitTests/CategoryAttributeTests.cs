@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class CategoryAttributeTests : StringPropertyOnlyTests<CategoryAttribute>
 {
@@ -16,5 +14,5 @@ public class CategoryAttributeTests : StringPropertyOnlyTests<CategoryAttribute>
     }
     
     protected override string PropertyName => "Category";
-    protected override CategoryAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override CategoryAttribute CreateAttributeWithStringProperty(string? value) => new(value);
 }

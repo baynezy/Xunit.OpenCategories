@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace Xunit.OpenCategories.UnitTests;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
 public class AuthorAttributeTests : StringPropertyOnlyTests<AuthorAttribute>
 {
@@ -16,5 +14,5 @@ public class AuthorAttributeTests : StringPropertyOnlyTests<AuthorAttribute>
     }
 
     protected override string PropertyName => "Author";
-    protected override AuthorAttribute CreateAttributeWithStringProperty(string value) => new(value);
+    protected override AuthorAttribute CreateAttributeWithStringProperty(string? value) => new(value);
 }
