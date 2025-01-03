@@ -1,46 +1,56 @@
 ﻿using System;
-using Xunit.Sdk;
+using System.Collections.Generic;
 
-namespace Xunit.OpenCategories
+namespace Xunit.OpenCategories;
+
+/// <summary>
+/// For tests that should only be executed locally and excluded from automated pipeline runs.
+/// </summary>
+/// <example>
+/// Trying out LINQ for the first time, writing a piece of code to understand IEnumerable.Take and Skip.
+/// </example>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class LocalTestAttribute : BaseAttribute
 {
     /// <summary>
-    /// For tests that should only be executed locally and excluded from automated pipeline runs.
+    /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class with a specified ID.
     /// </summary>
-    /// <example>
-    /// Trying out LINQ for the first time, writing a piece of code to understand IEnumerable.Take and Skip.
-    /// </example>
-    [TraitDiscoverer(LocalTestDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class LocalTestAttribute : Attribute, ITraitAttribute
+    /// <param name="id">The ID associated with the local test.</param>
+    public LocalTestAttribute(string id)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class with a specified ID.
-        /// </summary>
-        /// <param name="id">The ID associated with the local test.</param>
-        public LocalTestAttribute(string id)
-        {
-            Id = id;
-        }
+        Id = id;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class with a specified ID.
-        /// </summary>
-        /// <param name="id">The ID associated with the local test.</param>
-        public LocalTestAttribute(long id)
-        {
-            Id = id.ToString();
-        }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class with a specified ID.
+    /// </summary>
+    /// <param name="id">The ID associated with the local test.</param>
+    public LocalTestAttribute(long id)
+    {
+        Id = id.ToString();
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class.
-        /// </summary>
-        public LocalTestAttribute()
-        {
-        }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LocalTestAttribute"/> class.
+    /// </summary>
+    public LocalTestAttribute()
+    {
+    }
 
-        /// <summary>
-        /// Gets the ID associated with the local test.
-        /// </summary>
-        public string Id { get; }
+    /// <summary>
+    /// Gets the ID associated with the local test.
+    /// </summary>
+    public string Id { get; }
+
+    /// <inheritdoc />
+    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddOptionalTrait(traits, "LocalTest", Id);
+    }
+
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddCategory(traits, "LocalTest");
     }
 }

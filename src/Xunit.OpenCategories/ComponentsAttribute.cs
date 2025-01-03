@@ -6,9 +6,8 @@ namespace Xunit.OpenCategories
     /// <summary>
     /// Attribute to specify multiple components for a test class or method.
     /// </summary>
-    [TraitDiscoverer(ComponentsDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class ComponentsAttribute : Attribute, ITraitAttribute
+    public class ComponentsAttribute : BaseAttribute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ComponentsAttribute"/> class.

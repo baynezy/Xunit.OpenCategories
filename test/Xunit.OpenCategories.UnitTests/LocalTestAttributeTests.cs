@@ -1,8 +1,6 @@
-﻿using FluentAssertions;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
-namespace Xunit.OpenCategories.UnitTests;
-
-public class LocalTestAttributeTests
+public class LocalTestAttributeTests : OptionalIdTests<LocalTestAttribute>
 {
     [Fact]
     [LocalTest]
@@ -35,4 +33,9 @@ public class LocalTestAttributeTests
             .And.BeDecoratedWith<LocalTestAttribute>()
             .Which.Id.Should().Be("666 a");
     }
+
+    protected override string AttributeCategory => "LocalTest";
+    protected override string PropertyName => "LocalTest";
+    protected override LocalTestAttribute CreateAttributeWithStringProperty(string? value) => new(value);
+    protected override LocalTestAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

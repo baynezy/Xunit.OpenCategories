@@ -32,7 +32,7 @@ Also, both key and value must be specified on the command line. This means if yo
 | `Category`        | The category of the test                                                                                             |
 | `Component`       | The component of the test                                                                                            |
 | `Components`      | The list of components of the test                                                                                   |
-| `Database Test`   | A database test                                                                                                      |
+| `DatabaseTest`    | A database test                                                                                                      |
 | `Description`     | The description of the test                                                                                          |
 | `Documentation`   | A test case that exist primarily to document how something should work                                               |
 | `Expensive`       | A test that is expensive to run                                                                                      |

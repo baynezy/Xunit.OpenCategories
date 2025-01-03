@@ -1,8 +1,6 @@
-﻿using FluentAssertions;
+﻿namespace Xunit.OpenCategories.UnitTests;
 
-namespace Xunit.OpenCategories.UnitTests;
-
-public class ExpensiveAttributeTests
+public class ExpensiveAttributeTests : CategoryOnlyTests<ExpensiveAttribute>
 {
     [Fact]
     [Expensive]
@@ -13,4 +11,6 @@ public class ExpensiveAttributeTests
             .BeDecoratedWith<FactAttribute>()
             .And.BeDecoratedWith<ExpensiveAttribute>();
     }
+
+    protected override string AttributeCategory => "Expensive";
 }
