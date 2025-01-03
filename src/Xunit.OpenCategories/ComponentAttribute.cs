@@ -1,34 +1,41 @@
-using System;
-using Xunit.Sdk;
+namespace Xunit.OpenCategories;
 
-namespace Xunit.OpenCategories
+/// <summary>
+/// Attribute to specify a component for a test class or method.
+/// </summary>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class ComponentAttribute : BaseAttribute
 {
     /// <summary>
-    /// Attribute to specify a component for a test class or method.
+    /// Initializes a new instance of the <see cref="ComponentAttribute"/> class.
     /// </summary>
-    [TraitDiscoverer(ComponentDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class ComponentAttribute : Attribute, ITraitAttribute
+    public ComponentAttribute()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentAttribute"/> class.
-        /// </summary>
-        public ComponentAttribute()
-        {
-        }
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentAttribute"/> class with a specified component name.
-        /// </summary>
-        /// <param name="name">The name of the component.</param>
-        public ComponentAttribute(string name)
-        {
-            ComponentName = name;
-        }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ComponentAttribute"/> class with a specified component name.
+    /// </summary>
+    /// <param name="name">The name of the component.</param>
+    public ComponentAttribute(string? name)
+    {
+        ComponentName = name;
+    }
 
-        /// <summary>
-        /// Gets the name of the component.
-        /// </summary>
-        public string ComponentName { get; private set; }
+    /// <summary>
+    /// Gets the name of the component.
+    /// </summary>
+    public string? ComponentName { get; } = string.Empty;
+
+    /// <inheritdoc />
+    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddCategory(traits, "Component");
+    }
+
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddOptionalTrait(traits, "Component", ComponentName);
     }
 }

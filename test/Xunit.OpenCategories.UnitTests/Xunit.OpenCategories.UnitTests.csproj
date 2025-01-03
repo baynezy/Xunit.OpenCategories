@@ -1,40 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <ItemGroup>
+        <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="7.0.0" />
-    <PackageReference Include="JunitXml.TestLogger" Version="5.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="NSubstitute" Version="5.3.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <Using Include="Xunit"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Xunit.OpenCategories\Xunit.OpenCategories.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Bogus" Version="35.6.1"/>
+        <PackageReference Include="FluentAssertions" Version="7.0.0"/>
+        <PackageReference Include="JunitXml.TestLogger" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="xunit.v3" Version="1.0.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="TestResults\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Xunit.OpenCategories\Xunit.OpenCategories.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="TestResults\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="TestResults\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="TestResults\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="TestResults\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="TestResults\**"/>
+    </ItemGroup>
 
 </Project>
