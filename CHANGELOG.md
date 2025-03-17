@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded to .NET 8.0
 - Migrated to xUnit v3
 
+### Fixed
+
+- Issue with PR builds not running properly due to not being able to check out the fork
+
 ## [1.2.0.5] - 2025-01-01
 
 ### Added

@@ -10,6 +10,11 @@ on:
         required: false
         default: ''
         type: string
+      repository:
+        description: 'The repository to checkout'
+        required: false
+        default: '${{ github.repository }}'
+        type: string
   
 jobs:
   build-libraries:
@@ -23,6 +28,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ inputs.checkout-ref }}
+        repository: '${{ inputs.repository }}'
     - name: Checkout
       if: ${{ inputs.checkout-ref == '' }}
       uses: actions/checkout@v4

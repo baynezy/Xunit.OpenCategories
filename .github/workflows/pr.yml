@@ -28,6 +28,7 @@ jobs:
     with:
       version: ${{ needs.get-version.outputs.version }}
       checkout-ref: ${{ github.head_ref }}
+      repository: ${{ github.event.pull_request.head.repo.full_name }}
       
   check-markdown:
     needs: [get-version]
