@@ -1,4 +1,4 @@
-﻿namespace Xunit.OpenCategories;
+﻿namespace Xunit.OpenCategories.V3;
 
 /// <summary>
 /// Attribute to specify multiple services tested within a test class or method.

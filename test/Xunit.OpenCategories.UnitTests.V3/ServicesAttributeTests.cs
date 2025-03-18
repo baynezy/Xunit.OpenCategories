@@ -1,8 +1,9 @@
-﻿namespace Xunit.OpenCategories.UnitTests;
+﻿using Xunit.OpenCategories.V3;
+
+namespace Xunit.OpenCategories.UnitTests.V3;
 
 public class ServicesAttributeTests
 {
-
     [Fact]
     public void ServicesWithNoName()
     {
