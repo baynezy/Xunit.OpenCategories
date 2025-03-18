@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added `Services` attribute
+
 ## [2.0.0.7] - 2025-03-18
 
 ### Added

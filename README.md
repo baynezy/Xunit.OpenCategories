@@ -51,6 +51,7 @@ Also, both key and value must be specified on the command line. This means if yo
 | `IntegrationTest` | Integrations tests                                                                                                   |
 | `KnownBug`        | For failing tests relating to known bugs that should not fail a build                                                |
 | `LocalTest`       | For tests that should only be executed locally and excluded from automated pipeline runs                             |
+| `Services`        | A list of services under test                                                                                        |
 | `SnapshotTest`    | A snapshot test                                                                                                      |
 | `Specification`   | A specification test                                                                                                 |
 | `SystemTest`      | A system test                                                                                                        |
