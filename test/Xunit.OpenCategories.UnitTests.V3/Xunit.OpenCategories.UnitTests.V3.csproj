@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AwesomeAssertions" Version="8.0.0"/>
+        <PackageReference Include="Bogus" Version="35.6.2"/>
+        <PackageReference Include="JunitXml.TestLogger" Version="6.1.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
+        <PackageReference Include="xunit.v3" Version="2.0.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Xunit.OpenCategories.V3\Xunit.OpenCategories.V3.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="TestResults\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="TestResults\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="TestResults\**"/>
+    </ItemGroup>
+
+</Project>

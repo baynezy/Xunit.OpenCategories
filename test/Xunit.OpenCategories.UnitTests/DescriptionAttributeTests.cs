@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class DescriptionAttributeTests : StringPropertyOnlyTests<DescriptionAttribute>
+public class DescriptionAttributeTests
 {
     [Fact]
     [Description("All your base are belong to us")]
@@ -12,7 +12,4 @@ public class DescriptionAttributeTests : StringPropertyOnlyTests<DescriptionAttr
             .And.BeDecoratedWith<DescriptionAttribute>()
             .Which.Description.Should().Be("All your base are belong to us");
     }
-    
-    protected override string PropertyName => "Description";
-    protected override DescriptionAttribute CreateAttributeWithStringProperty(string? value) => new(value);
 }
