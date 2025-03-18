@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class SpecificationAttributeTests : OptionalIdTests<SpecificationAttribute>
+public class SpecificationAttributeTests
 {
     [Fact]
     [Specification]
@@ -33,9 +33,4 @@ public class SpecificationAttributeTests : OptionalIdTests<SpecificationAttribut
             .And.BeDecoratedWith<SpecificationAttribute>()
             .Which.Identifier.Should().Be("999");
     }
-
-    protected override string AttributeCategory => "Specification";
-    protected override string PropertyName => "Specification";
-    protected override SpecificationAttribute CreateAttributeWithStringProperty(string? value) => new(value);
-    protected override SpecificationAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }

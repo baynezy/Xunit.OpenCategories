@@ -63,9 +63,15 @@ jobs:
         target: Pack
         arguments: |
           versionNumber: ${{inputs.version}}
-    - name: Upload Package
+    - name: Upload Package - v2
       if: ${{ github.actor != 'dependabot[bot]' }}
       uses: actions/upload-artifact@v4
       with:
-        name: XunitOpenCategories
+        name: Xunit.OpenCategories
         path: ./src/Xunit.OpenCategories/bin/Release/*.nupkg
+    - name: Upload Package - v3
+      if: ${{ github.actor != 'dependabot[bot]' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: Xunit.OpenCategories.V3
+        path: ./src/Xunit.OpenCategories.V3/bin/Release/*.nupkg

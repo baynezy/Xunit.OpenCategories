@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgraded to .NET 8.0
 - Migrated to xUnit v3
+- Concurrently support xUnit v2 and v3
 
 ### Fixed
 

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Authors>Brendan Connolly, Simon Baynes</Authors>
+        <TargetFramework>net8.0</TargetFramework>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/baynezy/Xunit.OpenCategories</PackageProjectUrl>
+        <Description>Friendlier attributes to help categorise your tests.</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>Xunit,Testing</PackageTags>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <IsPackable>true</IsPackable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="xunit.v3.extensibility.core" Version="2.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="/"/>
+    </ItemGroup>
+
+</Project>
