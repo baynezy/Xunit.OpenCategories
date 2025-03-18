@@ -4,13 +4,14 @@ public class ServicesAttributeTests
 {
 
     [Fact]
-    [Services]
-    public void ServicesWithNoName_ShouldFailByDesign()
+    public void ServicesWithNoName()
     {
-        var testMethod = typeof(ServicesAttributeTests).GetMethod(nameof(ServicesWithNoName_ShouldFailByDesign));
-        testMethod.Should()
-            .BeDecoratedWith<FactAttribute>()
-            .And.BeDecoratedWith<ServicesAttribute>();
+        var act = () => new ServicesAttribute();
+
+        act.Should()
+            .Throw<ArgumentException>()
+            .WithMessage(
+                "Services attribute is used without specifying a service. At least one service name must be provided. (Parameter 'names')");
     }
 
     [Fact]

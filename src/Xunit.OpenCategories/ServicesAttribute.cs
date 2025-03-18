@@ -3,6 +3,7 @@
 /// <summary>
 /// Attribute to specify multiple services tested within a test class or method.
 /// </summary>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method)]
 public class ServicesAttribute : BaseAttribute
 {
     /// <summary>
