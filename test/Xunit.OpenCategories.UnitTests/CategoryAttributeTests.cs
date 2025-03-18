@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class CategoryAttributeTests : StringPropertyOnlyTests<CategoryAttribute>
+public class CategoryAttributeTests
 {
     [Fact]
     [Category("CategoryName")]
@@ -12,7 +12,4 @@ public class CategoryAttributeTests : StringPropertyOnlyTests<CategoryAttribute>
             .And.BeDecoratedWith<CategoryAttribute>()
             .Which.Name.Should().Be("CategoryName");
     }
-    
-    protected override string PropertyName => "Category";
-    protected override CategoryAttribute CreateAttributeWithStringProperty(string? value) => new(value);
 }

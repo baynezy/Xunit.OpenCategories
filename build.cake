@@ -2,7 +2,6 @@ var target = Argument("target", "Test");
 var configuration = Argument("configuration", "Release");
 var versionNumber = Argument("versionNumber", "0.1.0");
 var projectName = "Xunit.OpenCategories";
-var testProjectFolder = "./test/" + projectName + ".UnitTests/" + projectName + ".UnitTests.csproj";
 var solutionFolder = "./";
 
 Task("Clean")
@@ -32,17 +31,21 @@ Task("Build")
 	});
 
 Task("Test")
-	.Does(() =>
-	{
-		// Run tests
-		DotNetTest(testProjectFolder, new DotNetTestSettings
-		{
-			NoRestore = true,
-            NoBuild = true,
-			Configuration = configuration,
-            Loggers = new string[] { "junit;LogFileName=results.xml" }
-		});
-	});
+    .Does(() =>
+    {
+        // Run tests for all projects in the test folder
+        var testProjects = GetFiles("./test/**/*.csproj");
+        foreach (var project in testProjects)
+        {
+            DotNetTest(project.FullPath, new DotNetTestSettings
+            {
+                NoRestore = true,
+                NoBuild = true,
+                Configuration = configuration,
+                Loggers = new string[] { "junit;LogFileName=results.xml" }
+            });
+        }
+    });
 
 Task("Pack")
     .Does(() =>

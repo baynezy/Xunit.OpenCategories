@@ -14,12 +14,21 @@ on:
         required: true
         type: string
   
-jobs:    
-  publish-package:
+jobs:
+  publish-package-v2:
     uses: ./.github/workflows/step-publish-package.yml
     secrets: inherit
     with:
       deploy-env: ${{ inputs.deploy-env }}
       deploy-branch: ${{ inputs.deploy-branch }}
       version: ${{ inputs.version }}
-      package-name: XunitOpenCategories
+      package-name: Xunit.OpenCategories
+      
+  publish-package-v3:
+    uses: ./.github/workflows/step-publish-package.yml
+    secrets: inherit
+    with:
+      deploy-env: ${{ inputs.deploy-env }}
+      deploy-branch: ${{ inputs.deploy-branch }}
+      version: ${{ inputs.version }}
+      package-name: Xunit.OpenCategories.V3

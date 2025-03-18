@@ -1,53 +1,46 @@
-﻿namespace Xunit.OpenCategories;
+﻿using System;
+using Xunit.Sdk;
 
-/// <summary>
-/// Attribute to specify a bug ID for a test class or method.
-/// </summary>
-/// <remarks>
-/// This attribute can be applied to both classes and methods, and it supports multiple usages.
-/// </remarks>
-[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-public class BugAttribute : BaseAttribute
+namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BugAttribute"/> class with a string ID.
+    /// Attribute to specify a bug ID for a test class or method.
     /// </summary>
-    /// <param name="id">The bug ID as a string.</param>
-    public BugAttribute(string? id)
+    /// <remarks>
+    /// This attribute can be applied to both classes and methods, and it supports multiple usages.
+    /// </remarks>
+    [TraitDiscoverer(BugDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    public class BugAttribute : Attribute, ITraitAttribute
     {
-        Id = id;
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BugAttribute"/> class with a string ID.
+        /// </summary>
+        /// <param name="id">The bug ID as a string.</param>
+        public BugAttribute(string id)
+        {
+            Id = id;
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BugAttribute"/> class with a long ID.
-    /// </summary>
-    /// <param name="id">The bug ID as a long.</param>
-    public BugAttribute(long id)
-    {
-        Id = id.ToString();
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BugAttribute"/> class with a long ID.
+        /// </summary>
+        /// <param name="id">The bug ID as a long.</param>
+        public BugAttribute(long id)
+        {
+            Id = id.ToString();
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BugAttribute"/> class.
-    /// </summary>
-    public BugAttribute()
-    {
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BugAttribute"/> class.
+        /// </summary>
+        public BugAttribute()
+        {
+        }
 
-    /// <summary>
-    /// Gets the bug ID.
-    /// </summary>
-    public string? Id { get; } = string.Empty;
-
-    /// <inheritdoc />
-    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
-    {
-        AddOptionalTrait(traits, "Bug", Id);
-    }
-
-    /// <inheritdoc />
-    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
-    {
-        AddCategory(traits, "Bug");
+        /// <summary>
+        /// Gets the bug ID.
+        /// </summary>
+        public string Id { get; private set; }
     }
 }
