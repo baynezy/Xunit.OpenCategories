@@ -27,7 +27,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.package-name }}
-          path: ./src/Xunit.OpenCategories/bin/Release
+          path: ./src/${{ inputs.package-name }}/bin/Release
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4.3.1
         with:
@@ -44,4 +44,4 @@ jobs:
               source="github"
           fi
           
-          dotnet nuget push $(find ./src/Xunit.OpenCategories/bin/Release/*.nupkg) --api-key ${{ secrets.NUGET_API_KEY }} --source ${source}
+          dotnet nuget push $(find ./src/${{ inputs.package-name }}/bin/Release/*.nupkg) --api-key ${{ secrets.NUGET_API_KEY }} --source ${source}

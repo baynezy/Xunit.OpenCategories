@@ -1,17 +1,17 @@
-﻿namespace Xunit.OpenCategories;
+﻿using System;
+using Xunit.Sdk;
 
-/// <summary>
-/// Attribute to specify that a test is expensive in terms of resources or time.
-/// </summary>
-/// <remarks>
-/// This attribute can be applied to both classes and methods, and it supports multiple usages.
-/// </remarks>
-[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-public class ExpensiveAttribute : BaseAttribute
+namespace Xunit.OpenCategories
 {
-    /// <inheritdoc />
-    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    /// <summary>
+    /// Attribute to specify that a test is expensive in terms of resources or time.
+    /// </summary>
+    /// <remarks>
+    /// This attribute can be applied to both classes and methods, and it supports multiple usages.
+    /// </remarks>
+    [TraitDiscoverer(ExpensiveDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    public class ExpensiveAttribute : Attribute, ITraitAttribute
     {
-        AddCategory(traits, "Expensive");
     }
 }

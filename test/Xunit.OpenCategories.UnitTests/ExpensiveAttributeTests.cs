@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class ExpensiveAttributeTests : CategoryOnlyTests<ExpensiveAttribute>
+public class ExpensiveAttributeTests
 {
     [Fact]
     [Expensive]
@@ -11,6 +11,4 @@ public class ExpensiveAttributeTests : CategoryOnlyTests<ExpensiveAttribute>
             .BeDecoratedWith<FactAttribute>()
             .And.BeDecoratedWith<ExpensiveAttribute>();
     }
-
-    protected override string AttributeCategory => "Expensive";
 }

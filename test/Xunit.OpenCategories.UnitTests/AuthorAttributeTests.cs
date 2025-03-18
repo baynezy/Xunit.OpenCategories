@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class AuthorAttributeTests : StringPropertyOnlyTests<AuthorAttribute>
+public class AuthorAttributeTests
 {
     [Fact]
     [Author("Henry David Thoreau")]
@@ -12,7 +12,4 @@ public class AuthorAttributeTests : StringPropertyOnlyTests<AuthorAttribute>
             .And.BeDecoratedWith<AuthorAttribute>()
             .Which.AuthorName.Should().Be("Henry David Thoreau");
     }
-
-    protected override string PropertyName => "Author";
-    protected override AuthorAttribute CreateAttributeWithStringProperty(string? value) => new(value);
 }
