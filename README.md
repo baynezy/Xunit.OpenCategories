@@ -1,4 +1,5 @@
 # Xunit.OpenCategories
+
 Friendlier attributes to help categorise your tests.
 
 ## History
@@ -15,9 +16,18 @@ and did not get a response. So in order to keep the project alive I forked it.
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `master`  | [![master](https://github.com/baynezy/Xunit.OpenCategories/actions/workflows/branch-master.yml/badge.svg?branch=master)](https://github.com/baynezy/Xunit.OpenCategories/actions/workflows/branch-master.yml)     |
 | `develop` | [![develop](https://github.com/baynezy/Xunit.OpenCategories/actions/workflows/branch-develop.yml/badge.svg?branch=develop)](https://github.com/baynezy/Xunit.OpenCategories/actions/workflows/branch-develop.yml) |
-| `nuget`   | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.svg)](http://badge.fury.io/nu/Xunit.OpenCategories)                                                                                               |
+
+## Packages
+
+Currently, we support both xUnit v2 and v3. As such, we have two packages:
+
+| Package                                                                            | NuGet                                                                                                                     |
+|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| [Xunit.OpenCategories](https://www.nuget.org/packages/Xunit.OpenCategories/)       | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.svg)](http://badge.fury.io/nu/Xunit.OpenCategories)       |
+| [Xunit.OpenCategories.V3](https://www.nuget.org/packages/Xunit.OpenCategories.V3/) | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.V3.svg)](http://badge.fury.io/nu/Xunit.OpenCategories.V3) |
 
 ## Messy Traits?
+
 The xUnit built in option *Traits* can get a little messy. Its just 2 strings representing a key and value, unless you are familiar with xUnit and the Trait attribute it looks a little magical.
 
 Also, both key and value must be specified on the command line. This means if you decorate your test with 

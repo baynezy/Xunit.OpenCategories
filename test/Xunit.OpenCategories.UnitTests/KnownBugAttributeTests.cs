@@ -1,6 +1,6 @@
 ﻿namespace Xunit.OpenCategories.UnitTests;
 
-public class KnownBugAttributeTests : OptionalIdTests<KnownBugAttribute>
+public class KnownBugAttributeTests
 {
     [Fact]
     [KnownBug]
@@ -33,9 +33,4 @@ public class KnownBugAttributeTests : OptionalIdTests<KnownBugAttribute>
             .And.BeDecoratedWith<KnownBugAttribute>()
             .Which.Id.Should().Be("666 a");
     }
-
-    protected override string AttributeCategory => "KnownBug";
-    protected override string PropertyName => "KnownBug";
-    protected override KnownBugAttribute CreateAttributeWithStringProperty(string? value) => new(value);
-    protected override KnownBugAttribute CreateAttributeWithStringProperty(long value) => new(value);
 }
