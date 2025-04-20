@@ -18,22 +18,24 @@ public abstract class StringPropertyOnlyTests<TAttribute>
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>(PropertyName, value));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>(PropertyName, value));
     }
-    
+
     [Fact]
     public void WhenPropertyIsNull_ThenReturnEmptyTraits()
     {
         // arrange
         var attribute = CreateAttributeWithStringProperty(null);
-        
+
         // act
         var traits = attribute.GetTraits();
-        
+
         // assert
-        traits.Count.Should().Be(0);
+        traits.Count.Should()
+            .Be(0);
     }
-    
+
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
@@ -41,12 +43,13 @@ public abstract class StringPropertyOnlyTests<TAttribute>
     {
         // arrange
         var attribute = CreateAttributeWithStringProperty(value);
-        
+
         // act
         var traits = attribute.GetTraits();
-        
+
         // assert
-        traits.Count.Should().Be(0);
+        traits.Count.Should()
+            .Be(0);
     }
 
     protected abstract TAttribute CreateAttributeWithStringProperty(string? value);
