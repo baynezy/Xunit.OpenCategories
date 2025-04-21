@@ -14,7 +14,7 @@ public class ServicesAttribute : BaseAttribute
     /// <exception cref="ArgumentException">Thrown if no service names are provided.</exception>
     public ServicesAttribute(params string[] names)
     {
-        if (names == null || names.Length == 0)
+        if (names is null || names.Length == 0)
         {
             throw new ArgumentException(
                 "Services attribute is used without specifying a service. At least one service name must be provided.", nameof(names));
@@ -26,5 +26,20 @@ public class ServicesAttribute : BaseAttribute
     /// <summary>
     /// Gets the names of the Services.
     /// </summary>
-    public string[] ServiceNames { get; private set; }
+    public string[] ServiceNames { get; }
+    
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddCategory(traits, "Service");
+    }
+
+    /// <inheritdoc />
+    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
+    {
+        foreach (var name in ServiceNames)
+        {
+            AddOptionalTrait(traits, "Service", name);
+        }
+    }
 }

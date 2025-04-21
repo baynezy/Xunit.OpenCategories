@@ -16,11 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AwesomeAssertions" Version="8.0.2"/>
-        <PackageReference Include="Bogus" Version="35.6.2"/>
+        <PackageReference Include="AwesomeAssertions" Version="8.1.0"/>
+        <PackageReference Include="Bogus" Version="35.6.3"/>
         <PackageReference Include="JunitXml.TestLogger" Version="6.1.0"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
-        <PackageReference Include="xunit.v3" Version="2.0.0"/>
+        <PackageReference Include="xunit.v3" Version="2.0.1"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2"/>
     </ItemGroup>
 

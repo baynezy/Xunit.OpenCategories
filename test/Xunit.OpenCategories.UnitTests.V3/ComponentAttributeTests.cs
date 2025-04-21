@@ -13,6 +13,7 @@ public class ComponentAttributeTests
             .BeDecoratedWith<FactAttribute>()
             .And.BeDecoratedWith<ComponentAttribute>();
     }
+
     [Fact]
     [Component("Service X")]
     public void ComponentWithName()
@@ -21,22 +22,24 @@ public class ComponentAttributeTests
         testMethod.Should()
             .BeDecoratedWith<FactAttribute>()
             .And.BeDecoratedWith<ComponentAttribute>()
-            .Which.ComponentName.Should().Be("Service X");
+            .Which.ComponentName.Should()
+            .Be("Service X");
     }
-    
+
     [Fact]
     public void WhenComponentNameIsProvided_ThenReturnsComponentName()
     {
         // arrange
         var componentAttribute = new ComponentAttribute("Service X");
-        
+
         // act
         var traits = componentAttribute.GetTraits();
-        
+
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>("Component", "Service X"));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>("Component", "Service X"));
     }
-    
+
     [Theory]
     [InlineData("   ")]
     [InlineData("")]
@@ -45,25 +48,27 @@ public class ComponentAttributeTests
     {
         // arrange
         var componentAttribute = new ComponentAttribute(componentName);
-        
+
         // act
         var traits = componentAttribute.GetTraits();
-        
+
         // assert
-        traits.Should().NotContain(kv => kv.Key == "Component");
+        traits.Should()
+            .NotContain(kv => kv.Key == "Component");
     }
-    
+
     [Fact]
     public void WhenNoComponentName_ThenReturnCategoryComponent()
     {
         // arrange
         var componentAttribute = new ComponentAttribute();
-        
+
         // act
         var traits = componentAttribute.GetTraits();
-        
+
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>("Category", "Component"));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>("Category", "Component"));
     }
 
     [Theory]
@@ -74,11 +79,12 @@ public class ComponentAttributeTests
     {
         // arrange
         var componentAttribute = new ComponentAttribute(componentName);
-        
+
         // act
         var traits = componentAttribute.GetTraits();
-        
+
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>("Category", "Component"));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>("Category", "Component"));
     }
 }

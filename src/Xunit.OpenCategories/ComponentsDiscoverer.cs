@@ -25,14 +25,13 @@ namespace Xunit.OpenCategories
 
             yield return new KeyValuePair<string, string>("Category", "Components");
 
-            if (names != null)
+            if (names is null) yield break;
+            
+            foreach (var name in names)
             {
-                foreach (var name in names)
+                if (!string.IsNullOrWhiteSpace(name))
                 {
-                    if (!string.IsNullOrWhiteSpace(name))
-                    {
-                        yield return new KeyValuePair<string, string>("Component", name);
-                    }
+                    yield return new KeyValuePair<string, string>("Component", name);
                 }
             }
         }

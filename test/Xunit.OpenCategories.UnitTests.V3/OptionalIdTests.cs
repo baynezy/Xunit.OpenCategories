@@ -16,7 +16,8 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>(PropertyName, id));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>(PropertyName, id));
     }
 
     [Fact]
@@ -30,7 +31,8 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>(PropertyName, id.ToString()));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>(PropertyName, id.ToString()));
     }
 
     [Theory]
@@ -45,7 +47,8 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().NotContain(kv => kv.Key == PropertyName);
+        traits.Should()
+            .NotContain(kv => kv.Key == PropertyName);
     }
 
     [Fact]
@@ -58,9 +61,10 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>(CategoryKey, AttributeCategory));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>(CategoryKey, AttributeCategory));
     }
-    
+
     [Theory]
     [InlineData(777)]
     [InlineData("123")]
@@ -76,7 +80,8 @@ public abstract class OptionalIdTests<TAttribute> : CategoryOnlyTests<TAttribute
         var traits = attribute.GetTraits();
 
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>(CategoryKey, AttributeCategory));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>(CategoryKey, AttributeCategory));
     }
 
     protected abstract string PropertyName { get; }
