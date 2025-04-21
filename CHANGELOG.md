@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Bug where `Components` attribute was not adding the correct traits
+- Bug where `Services` attribute was not adding the correct traits
 
 ## [2.1.0.8] - 2025-03-18
 
