@@ -30,12 +30,12 @@ public class ComponentAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddCategory(traits, "Component");
+        AddOptionalTrait(traits, "Component", ComponentName);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddOptionalTrait(traits, "Component", ComponentName);
+        AddCategory(traits, "Component");
     }
 }
