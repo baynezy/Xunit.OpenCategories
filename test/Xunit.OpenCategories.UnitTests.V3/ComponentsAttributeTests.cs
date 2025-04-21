@@ -94,7 +94,7 @@ public class ComponentsAttributeTests
     [InlineData("Component A", "Component B")]
     [InlineData("Component A", "Component B, Component C")]
     [InlineData("")]
-    public void RegardlessOrComponents_ThenShouldHaveACategoryOfComponents(params string[] componentNames)
+    public void RegardlessOfComponents_ThenShouldHaveACategoryOfComponents(params string[] componentNames)
     {
         // arrange
         var componentAttribute = new ComponentsAttribute(componentNames);

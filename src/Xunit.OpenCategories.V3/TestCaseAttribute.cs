@@ -46,6 +46,5 @@ public class TestCaseAttribute : BaseAttribute
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
         AddCategory(traits, "TestCase");
-
     }
 }

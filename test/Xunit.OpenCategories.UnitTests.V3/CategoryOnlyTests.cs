@@ -9,11 +9,12 @@ public abstract class CategoryOnlyTests<TAttribute> where TAttribute : Attribute
     {
         // arrange
         var attribute = new TAttribute();
-        
+
         // act
         var traits = attribute.GetTraits();
-        
+
         // assert
-        traits.Should().Contain(new KeyValuePair<string, string>("Category", AttributeCategory));
+        traits.Should()
+            .Contain(new KeyValuePair<string, string>("Category", AttributeCategory));
     }
 }
