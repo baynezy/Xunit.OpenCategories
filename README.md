@@ -19,12 +19,12 @@ and did not get a response. So in order to keep the project alive I forked it.
 
 ## Packages
 
-Currently, we support both xUnit v2 and v3. As such, we have two packages:
+We support both xUnit v2 and v3 through separate packages that share common core functionality:
 
-| Package                                                                            | NuGet                                                                                                                     |
-|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| [Xunit.OpenCategories](https://www.nuget.org/packages/Xunit.OpenCategories/)       | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.svg)](http://badge.fury.io/nu/Xunit.OpenCategories)       |
-| [Xunit.OpenCategories.V3](https://www.nuget.org/packages/Xunit.OpenCategories.V3/) | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.V3.svg)](http://badge.fury.io/nu/Xunit.OpenCategories.V3) |
+| Package                                                                            | xUnit Version | NuGet                                                                                                                     |
+|------------------------------------------------------------------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------|
+| [Xunit.OpenCategories](https://www.nuget.org/packages/Xunit.OpenCategories/)       | v2            | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.svg)](http://badge.fury.io/nu/Xunit.OpenCategories)       |
+| [Xunit.OpenCategories.V3](https://www.nuget.org/packages/Xunit.OpenCategories.V3/) | v3            | [![NuGet version](https://badge.fury.io/nu/Xunit.OpenCategories.V3.svg)](http://badge.fury.io/nu/Xunit.OpenCategories.V3) |
 
 ## Messy Traits?
 
