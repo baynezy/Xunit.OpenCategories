@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Authors>Brendan Connolly, Simon Baynes</Authors>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/baynezy/Xunit.OpenCategories</PackageProjectUrl>
         <Description>Friendlier attributes to help categorise your tests.</Description>
@@ -16,6 +16,7 @@
         <IsPackable>true</IsPackable>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
