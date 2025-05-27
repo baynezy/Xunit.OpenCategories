@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0.10] - 2025-05-27
+
 ### Added
 
 - Added netstandard2.0 target to Xunit.OpenCategories.V3 package for compatibility with legacy systems
@@ -98,7 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modified to use custom GA workflows
 - Published to NuGet
 
-[unreleased]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.1.1.9...HEAD
+[unreleased]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.2.0.10...HEAD
+[2.2.0.10]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.1.1.9...2.2.0.10
 [2.1.1.9]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.1.0.8...2.1.1.9
 [2.1.0.8]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.0.0.7...2.1.0.8
 [2.0.0.7]: https://github.com/baynezy/Xunit.OpenCategories/compare/1.2.0.5...2.0.0.7
