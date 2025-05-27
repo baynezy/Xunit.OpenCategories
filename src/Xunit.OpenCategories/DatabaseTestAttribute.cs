@@ -9,7 +9,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// This attribute can be applied to both classes and methods, and it supports multiple usages.
     /// </remarks>
-    [TraitDiscoverer(DatabaseTestDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
+    [TraitDiscoverer("Xunit.OpenCategories.DatabaseTestDiscoverer", "Xunit.OpenCategories")]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class DatabaseTestAttribute : Attribute, ITraitAttribute
     {

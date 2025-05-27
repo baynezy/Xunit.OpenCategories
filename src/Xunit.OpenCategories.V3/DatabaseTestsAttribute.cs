@@ -1,4 +1,7 @@
-﻿namespace Xunit.OpenCategories.V3;
+﻿using System.Collections.Generic;
+using Xunit.OpenCategories.Core;
+
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
 /// Attribute to specify that a test class or method is related to database testing.
@@ -12,6 +15,6 @@ public class DatabaseTestsAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddCategory(traits, "DatabaseTest");
+        AddCategory(traits, TraitConstants.DatabaseTestCategory);
     }
 }

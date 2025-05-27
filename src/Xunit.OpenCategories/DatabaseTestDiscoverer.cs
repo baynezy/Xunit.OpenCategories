@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xunit.Abstractions;
+using Xunit.OpenCategories.Core;
 using Xunit.Sdk;
 
 namespace Xunit.OpenCategories
@@ -21,7 +22,7 @@ namespace Xunit.OpenCategories
         /// <returns>An enumerable of key-value pairs representing the traits.</returns>
         public IEnumerable<KeyValuePair<string, string>> GetTraits(IAttributeInfo traitAttribute)
         {
-            yield return new KeyValuePair<string, string>("Category", "DatabaseTest");
+            yield return TraitDiscoveryUtil.CreateCategoryTrait(TraitConstants.DatabaseTestCategory);
         }
     }
 }
