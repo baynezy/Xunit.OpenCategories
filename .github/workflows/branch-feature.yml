@@ -15,7 +15,7 @@ on:
 
 jobs:
   get-version:
-    if: startsWith(github.head_ref, 'feature/')
+    if: startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'copilot/')
     uses: ./.github/workflows/step-version.yml
     secrets: inherit
     with:
