@@ -1,4 +1,7 @@
-﻿namespace Xunit.OpenCategories.V3;
+﻿using System.Collections.Generic;
+using Xunit.OpenCategories.Core;
+
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
 /// Base attribute class that implements the ITraitAttribute interface.
@@ -44,16 +47,15 @@ public abstract class BaseAttribute : Attribute, ITraitAttribute
     /// <param name="value">The value of the trait.</param>
     protected static void AddOptionalTrait(List<KeyValuePair<string, string>> traits, string name, string? value)
     {
-        if (!string.IsNullOrWhiteSpace(value))
+        if (!TraitDiscoveryUtil.IsNullOrWhitespace(value))
         {
-            traits.Add(new KeyValuePair<string, string>(name, value));
+            traits.Add(TraitDiscoveryUtil.CreateTrait(name, value!));
         }
     }
 
     private static void AddMandatoryTrait(List<KeyValuePair<string, string>> traits, string name, string value)
     {
-        var category = new KeyValuePair<string, string>(name, value);
-        traits.Add(category);
+        traits.Add(TraitDiscoveryUtil.CreateTrait(name, value));
     }
 
     /// <summary>
@@ -63,6 +65,6 @@ public abstract class BaseAttribute : Attribute, ITraitAttribute
     /// <param name="value">The value of the trait.</param>
     protected static void AddCategory(List<KeyValuePair<string, string>> traits, string value)
     {
-        AddMandatoryTrait(traits,"Category", value);
+        AddMandatoryTrait(traits, TraitConstants.CategoryKey, value);
     }
 }

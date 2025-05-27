@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Xunit.OpenCategories.Core;
+
 namespace Xunit.OpenCategories.V3;
 
 /// <summary>
@@ -42,12 +45,12 @@ public class UnitTestAttribute : BaseAttribute
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddOptionalTrait(traits, "UnitTest", Identifier);
+        AddOptionalTrait(traits, TraitConstants.UnitTestCategory, Identifier);
     }
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddCategory(traits, "UnitTest");
+        AddCategory(traits, TraitConstants.UnitTestCategory);
     }
 }

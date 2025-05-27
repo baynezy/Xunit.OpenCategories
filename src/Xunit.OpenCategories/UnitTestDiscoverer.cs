@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Xunit.OpenCategories.Core;
 using Xunit.Sdk;
 
 namespace Xunit.OpenCategories
@@ -23,10 +24,10 @@ namespace Xunit.OpenCategories
         {
             var name = traitAttribute.GetNamedArgument<string>("Identifier");
 
-            yield return new KeyValuePair<string, string>("Category", "UnitTest");
+            yield return TraitDiscoveryUtil.CreateCategoryTrait(TraitConstants.UnitTestCategory);
 
-            if (!string.IsNullOrWhiteSpace(name))
-                yield return new KeyValuePair<string, string>("UnitTest", name);
+            if (!TraitDiscoveryUtil.IsNullOrWhitespace(name))
+                yield return TraitDiscoveryUtil.CreateTrait(TraitConstants.UnitTestCategory, name);
         }
     }
 }

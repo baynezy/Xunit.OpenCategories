@@ -1,4 +1,5 @@
 using System;
+using Xunit.OpenCategories.Core;
 using Xunit.Sdk;
 
 namespace Xunit.OpenCategories
@@ -9,7 +10,7 @@ namespace Xunit.OpenCategories
     /// <remarks>
     /// Unit tests are used to verify the functionality of a specific section of code.
     /// </remarks>
-    [TraitDiscoverer(UnitTestDiscoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
+    [TraitDiscoverer("Xunit.OpenCategories.UnitTestDiscoverer", "Xunit.OpenCategories")]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class UnitTestAttribute : Attribute, ITraitAttribute
     {
