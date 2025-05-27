@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated GitHub Actions workflow to run tests for branches with `copilot/` prefix in addition to `feature/` prefix
+
 ## [2.1.1.9] - 2025-04-21
 
 ### Fixed
