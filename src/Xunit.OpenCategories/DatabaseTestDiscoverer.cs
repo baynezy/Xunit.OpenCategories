@@ -1,28 +1,18 @@
-﻿using System.Collections.Generic;
-using Xunit.Abstractions;
-using Xunit.OpenCategories.Core;
-using Xunit.Sdk;
+﻿using Xunit.OpenCategories.Core;
 
 namespace Xunit.OpenCategories
 {
     /// <summary>
     /// Discovers the traits for the <see cref="DatabaseTestAttribute"/>.
     /// </summary>
-    public class DatabaseTestDiscoverer : ITraitDiscoverer
+    public class DatabaseTestDiscoverer : BaseTraitDiscoverer
     {
         /// <summary>
         /// The fully qualified type name of the discoverer.
         /// </summary>
         internal const string DiscovererTypeName = DiscovererUtil.AssemblyName + "." + nameof(DatabaseTestDiscoverer);
 
-        /// <summary>
-        /// Gets the traits for the specified trait attribute.
-        /// </summary>
-        /// <param name="traitAttribute">The trait attribute containing the database test information.</param>
-        /// <returns>An enumerable of key-value pairs representing the traits.</returns>
-        public IEnumerable<KeyValuePair<string, string>> GetTraits(IAttributeInfo traitAttribute)
-        {
-            yield return TraitDiscoveryUtil.CreateCategoryTrait(TraitConstants.DatabaseTestCategory);
-        }
+        /// <inheritdoc />
+        protected override string GetCategoryValue() => TraitConstants.DatabaseTestCategory;
     }
 }

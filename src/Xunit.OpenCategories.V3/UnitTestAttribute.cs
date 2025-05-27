@@ -10,12 +10,12 @@ namespace Xunit.OpenCategories.V3;
 /// Unit tests are used to verify the functionality of a specific section of code.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-public class UnitTestAttribute : BaseAttribute
+public class UnitTestAttribute : BaseIdentifierAttribute
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="UnitTestAttribute"/> class.
     /// </summary>
-    public UnitTestAttribute()
+    public UnitTestAttribute() : base()
     {
     }
 
@@ -23,30 +23,20 @@ public class UnitTestAttribute : BaseAttribute
     /// Initializes a new instance of the <see cref="UnitTestAttribute"/> class with a specified identifier.
     /// </summary>
     /// <param name="name">The identifier associated with the unit test.</param>
-    public UnitTestAttribute(string? name)
+    public UnitTestAttribute(string? name) : base(name)
     {
-        Identifier = name;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UnitTestAttribute"/> class with a specified identifier.
     /// </summary>
     /// <param name="id">The identifier associated with the unit test.</param>
-    public UnitTestAttribute(long id)
+    public UnitTestAttribute(long id) : base(id)
     {
-        Identifier = id.ToString();
     }
-
-    /// <summary>
-    /// Gets the identifier associated with the unit test.
-    /// </summary>
-    public string? Identifier { get; } = string.Empty;
 
     /// <inheritdoc />
-    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
-    {
-        AddOptionalTrait(traits, TraitConstants.UnitTestCategory, Identifier);
-    }
+    protected override string GetPropertyName() => TraitConstants.UnitTestCategory;
 
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
