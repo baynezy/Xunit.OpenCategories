@@ -27,7 +27,7 @@
         /// <summary>
         /// Gets the names of the components.
         /// </summary>
-        public string[] ComponentNames { get; } = [];
+        public string[] ComponentNames { get; } = Array.Empty<string>();
 
         /// <inheritdoc/>
         protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)

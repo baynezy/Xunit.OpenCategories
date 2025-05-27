@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added netstandard2.0 target to Xunit.OpenCategories.V3 package for compatibility with legacy systems
+
 ## [2.1.1.9] - 2025-04-21
 
 ### Fixed
