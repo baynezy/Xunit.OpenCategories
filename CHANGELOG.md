@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed dependabot grouping for xunit.v3.extensibility packages ([#156](https://github.com/baynezy/Xunit.OpenCategories/issues/156))
+
 ## [2.2.0.10] - 2025-05-27
 
 ### Added
