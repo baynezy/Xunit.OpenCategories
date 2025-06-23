@@ -17,6 +17,7 @@ updates:
         patterns:
           - "xunit.v3"
           - "xunit.v3.*"
+          - "xunit.v3.extensibility.*"
 
   - package-ecosystem: "github-actions"
     directory: "/" # Location of package manifests
