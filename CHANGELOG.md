@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed dependabot grouping for xunit.v3.extensibility packages ([#156](https://github.com/baynezy/Xunit.OpenCategories/issues/156))
 
+### Changed
+
+- Migrated from `thomaseizinger/keep-a-changelog-new-release` to `baynezy/ChangeLogger.Action` (#158)
+
 ## [2.2.0.10] - 2025-05-27
 
 ### Added
