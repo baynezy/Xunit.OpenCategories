@@ -25,13 +25,13 @@ jobs:
         echo "Branch: ${{ inputs.checkout-ref }}"
     - name: Checkout Specific Ref
       if: ${{ inputs.checkout-ref != '' }}
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         ref: ${{ inputs.checkout-ref }}
         repository: '${{ inputs.repository }}'
     - name: Checkout
       if: ${{ inputs.checkout-ref == '' }}
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5.0.0
       with:
