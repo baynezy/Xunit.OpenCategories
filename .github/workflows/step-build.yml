@@ -33,7 +33,7 @@ jobs:
       if: ${{ inputs.checkout-ref == '' }}
       uses: actions/checkout@v6
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v5.0.0
+      uses: actions/setup-dotnet@v5.0.1
       with:
         dotnet-version: 8.0.x
     - name: Restore
@@ -65,13 +65,13 @@ jobs:
           versionNumber: ${{inputs.version}}
     - name: Upload Package - v2
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: Xunit.OpenCategories
         path: ./src/Xunit.OpenCategories/bin/Release/*.nupkg
     - name: Upload Package - v3
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: Xunit.OpenCategories.V3
         path: ./src/Xunit.OpenCategories.V3/bin/Release/*.nupkg
