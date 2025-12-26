@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix naming issue with DatabaseTests in V3 (#202)
 - Fix naming issue with IntegrationTests in V3 (#202)
 - Fix naming issue with SnapshotTests in V3 (#202)
+- Release creation permissions (#232)
 
 ## [2.3.3.16] - 2025-12-26
 
