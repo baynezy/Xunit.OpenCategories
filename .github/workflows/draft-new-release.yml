@@ -12,6 +12,9 @@ on:
       patch_version:
         description: 'The patch version you want to release.'
         required: true
+        
+permissions: 
+  contents: write
 
 jobs:
 
