@@ -46,7 +46,7 @@ public abstract class BaseAttribute : Attribute, ITraitAttribute
     {
         if (!string.IsNullOrWhiteSpace(value))
         {
-            traits.Add(new KeyValuePair<string, string>(name, value));
+            traits.Add(new KeyValuePair<string, string>(name, value!));
         }
     }
 
