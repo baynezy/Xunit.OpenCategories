@@ -20,7 +20,7 @@ jobs:
         run: |
           body=$BODY
           comment=$COMMENT
-          issue_number=${{ github.event.issue.number }}
+          issue_number=$ISSUE_NUMBER
 
           # if body contains "blocked" or comment contains "blocked"
           # add label "blocked"
@@ -33,4 +33,5 @@ jobs:
         env:
           BODY: ${{ github.event.issue.body }}
           COMMENT: ${{ github.event.comment.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
