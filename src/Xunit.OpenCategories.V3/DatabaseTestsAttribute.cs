@@ -7,6 +7,7 @@
 /// This attribute can be applied to both classes and methods, and it supports multiple usages.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+[Obsolete("Use DatabaseTestAttribute from Xunit.OpenCategories instead.")]
 public class DatabaseTestsAttribute : BaseAttribute
 {
     /// <inheritdoc />

@@ -1,18 +1,17 @@
 ﻿namespace Xunit.OpenCategories.V3;
 
 /// <summary>
-/// Attribute to mark a test as a snapshot test.
+/// Attribute to specify that a test class or method is related to database testing.
 /// </summary>
 /// <remarks>
-/// Snapshot tests are used to verify that the output of a function matches the expected output.
+/// This attribute can be applied to both classes and methods, and it supports multiple usages.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-[Obsolete("Use SnapshotTestAttribute from Xunit.OpenCategories instead.")]
-public class SnapshotTestsAttribute : BaseAttribute
+public class DatabaseTestAttribute : BaseAttribute
 {
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
     {
-        AddCategory(traits, "SnapshotTest");
+        AddCategory(traits, "DatabaseTest");
     }
 }

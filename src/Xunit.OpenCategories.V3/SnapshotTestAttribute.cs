@@ -7,8 +7,7 @@
 /// Snapshot tests are used to verify that the output of a function matches the expected output.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-[Obsolete("Use SnapshotTestAttribute from Xunit.OpenCategories instead.")]
-public class SnapshotTestsAttribute : BaseAttribute
+public class SnapshotTestAttribute : BaseAttribute
 {
     /// <inheritdoc />
     protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
