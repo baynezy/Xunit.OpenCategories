@@ -21,6 +21,14 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Xunit.OpenCategories.SourceGenerators\Xunit.OpenCategories.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="..\Xunit.OpenCategories.txt" Link="Xunit.OpenCategories.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="/"/>
     </ItemGroup>
 
