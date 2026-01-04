@@ -2,7 +2,6 @@ Author
 Bug
 Category
 Component
-Components
 DatabaseTest
 Description
 Documentation
@@ -12,7 +11,6 @@ Feature
 IntegrationTest
 KnownBug
 LocalTest
-Services
 SnapshotTest
 Specification
 SystemTest
