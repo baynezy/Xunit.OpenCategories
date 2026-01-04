@@ -1,11 +1,7 @@
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.Text;
 using Scriban;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+using Xunit.OpenCategories.SourceGenerators.Shared;
 
 namespace Xunit.OpenCategories.V3.SourceGenerators
 {
@@ -26,54 +22,16 @@ namespace Xunit.OpenCategories.V3.SourceGenerators
 
         private static void Execute(SourceProductionContext context, FileOptions result)
         {
-            IEnumerable<string> categoryNames = GetCategoryNames(result.CategoryFiles);
+            var categoryNames = GeneratorHelpers.GetCategoryNames(result.CategoryFiles);
 
-            string attributeTemplateFileContent = GetTemplateContent("Attribute.liquid");
+            string attributeTemplateFileContent = GeneratorHelpers.GetTemplateContent(typeof(CategoriesGenerator), "Attribute.liquid");
 
             var attributeTemplate = Template.Parse(attributeTemplateFileContent);
 
             foreach (string categoryName in categoryNames)
             {
-                CreateAttributeFile(categoryName, attributeTemplate, context);
+                GeneratorHelpers.CreateSourceFile(categoryName, $"{categoryName}Attribute.cs", attributeTemplate, context);
             }
-        }
-
-        private static void CreateAttributeFile(string categoryName, Template template, SourceProductionContext context)
-        {
-            string output = template.Render(new
-            {
-                categoryname = categoryName
-            });
-
-            context.AddSource($"{categoryName}Attribute.cs", SourceText.From(output, Encoding.UTF8));
-        }
-
-        private static IEnumerable<string> GetCategoryNames(IEnumerable<AdditionalText> categoryFiles)
-        {
-            List<string> categoryNames = [];
-
-            foreach (AdditionalText categoryFile in categoryFiles)
-            {
-                SourceText? categoryFileContent = categoryFile.GetText();
-
-                if (categoryFileContent == null)
-                {
-                    continue;
-                }
-
-                categoryNames.AddRange(categoryFileContent.Lines.Select(l => l.ToString()));
-            }
-
-            return categoryNames;
-        }
-
-        private static string GetTemplateContent(string fileName)
-        {
-            using var stream = typeof(CategoriesGenerator).Assembly.GetManifestResourceStream($"{typeof(CategoriesGenerator).Namespace}.Templates.{fileName}");
-
-            using var streamReader = new StreamReader(stream);
-
-            return streamReader.ReadToEnd();
         }
     }
 }
