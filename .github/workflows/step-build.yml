@@ -65,13 +65,13 @@ jobs:
           versionNumber: ${{inputs.version}}
     - name: Upload Package - v2
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       with:
         name: Xunit.OpenCategories
         path: ./src/Xunit.OpenCategories/bin/Release/*.nupkg
     - name: Upload Package - v3
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       with:
         name: Xunit.OpenCategories.V3
         path: ./src/Xunit.OpenCategories.V3/bin/Release/*.nupkg
