@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.1.19] - 2026-03-04
+
 ## [2.4.0.18] - 2025-12-27
 
 ### Fixed
@@ -130,7 +132,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modified to use custom GA workflows
 - Published to NuGet
 
-[unreleased]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.4.0.18...HEAD
+[unreleased]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.4.1.19...HEAD
+[2.4.1.19]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.4.0.18...2.4.1.19
 [2.4.0.18]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.3.3.16...2.4.0.18
 [2.3.3.16]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.3.2.15...2.3.3.16
 [2.3.2.15]: https://github.com/baynezy/Xunit.OpenCategories/compare/2.3.1.13...2.3.2.15
