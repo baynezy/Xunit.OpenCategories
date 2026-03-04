@@ -34,7 +34,7 @@ jobs:
           PATCH_VERSION: ${{ github.event.inputs.patch_version }}
         
       - name: Update Version Number
-        uses: Afterlife-Guide/SemVer.Action@dbf2fca7a9c13acae677a3a7924aa5b18cab1543 # 1.3.2.18
+        uses: Afterlife-Guide/SemVer.Action@650ef55c95f6be94af7d59fe34fcd1429d496462 # 1.3.3.19
         with:
           path: semver.json
           major-version: ${{ github.event.inputs.major_version }}
