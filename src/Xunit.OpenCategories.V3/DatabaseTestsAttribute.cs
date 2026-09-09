@@ -1,13 +1,12 @@
-﻿namespace Xunit.OpenCategories.V3;
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
-/// Attribute to specify that a test class or method is related to database testing.
+/// Attribute to categorize a test as a database test.
 /// </summary>
 /// <remarks>
-/// This attribute can be applied to both classes and methods, and it supports multiple usages.
+/// This is a category-only attribute that applies the "DatabaseTest" category.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-[Obsolete("Use DatabaseTestAttribute from Xunit.OpenCategories instead.")]
 public class DatabaseTestsAttribute : BaseAttribute
 {
     /// <inheritdoc />

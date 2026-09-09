@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
 namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// Discoverer for the <see cref="ServicesAttribute"/> attribute.
+    /// Discovers the traits for the <see cref="ServicesAttribute"/>.
     /// </summary>
     public class ServicesDiscoverer : ITraitDiscoverer
     {
@@ -13,21 +14,26 @@ namespace Xunit.OpenCategories
         /// The fully qualified type name of the discoverer.
         /// </summary>
         internal const string DiscovererTypeName = DiscovererUtil.AssemblyName + "." + nameof(ServicesDiscoverer);
-        
-        /// <inheritdoc/>
+
+        /// <summary>
+        /// Gets the traits for the specified trait attribute.
+        /// </summary>
+        /// <param name="traitAttribute">The trait attribute containing the service information.</param>
+        /// <returns>An enumerable of key-value pairs representing the traits.</returns>
         public IEnumerable<KeyValuePair<string, string>> GetTraits(IAttributeInfo traitAttribute)
         {
-            var names = traitAttribute.GetNamedArgument<string[]>("ServiceNames");
-            
-            yield return new KeyValuePair<string, string>("Category", "Services");
+            var serviceNames = traitAttribute.GetNamedArgument<string[]>("ServiceNames");
 
-            if (names is null) yield break;
-            
-            foreach (var name in names)
+            yield return new KeyValuePair<string, string>("Category", "Service");
+
+            if (serviceNames != null && serviceNames.Any())
             {
-                if (!string.IsNullOrWhiteSpace(name))
+                foreach (var service in serviceNames)
                 {
-                    yield return new KeyValuePair<string, string>("Service", name);
+                    if (!string.IsNullOrWhiteSpace(service))
+                    {
+                        yield return new KeyValuePair<string, string>("Service", service);
+                    }
                 }
             }
         }
