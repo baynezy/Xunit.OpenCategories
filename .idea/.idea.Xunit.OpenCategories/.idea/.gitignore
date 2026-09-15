@@ -14,3 +14,7 @@
 
 ## Copilot
 copilot.data.*
+
+# aws
+awsToolkit.xml
+aws.xml
