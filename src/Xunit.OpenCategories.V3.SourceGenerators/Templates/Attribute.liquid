@@ -1,0 +1,53 @@
+namespace Xunit.OpenCategories.V3;
+
+/// <summary>
+/// Attribute to specify a {{ categoryname }} for a test class or method.
+/// </summary>
+/// <remarks>
+/// This attribute can be applied to both classes and methods, and it supports multiple usages.
+/// </remarks>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class {{ categoryname }}Attribute : BaseAttribute
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class with a string ID.
+    /// </summary>
+    /// <param name="id">The {{ categoryname }} ID as a string.</param>
+    public {{ categoryname }}Attribute(string? id)
+    {
+        Id = id;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class with a long ID.
+    /// </summary>
+    /// <param name="id">The {{ categoryname }} ID as a long.</param>
+    public {{ categoryname }}Attribute(long id)
+    {
+        Id = id.ToString();
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class.
+    /// </summary>
+    public {{ categoryname }}Attribute()
+    {
+    }
+
+    /// <summary>
+    /// Gets the {{ categoryname }} ID.
+    /// </summary>
+    public string? Id { get; } = string.Empty;
+
+    /// <inheritdoc />
+    protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddOptionalTrait(traits, "{{ categoryname }}", Id);
+    }
+
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddCategory(traits, "{{ categoryname }}");
+    }
+}

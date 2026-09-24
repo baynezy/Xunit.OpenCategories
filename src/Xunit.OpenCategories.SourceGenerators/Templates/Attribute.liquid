@@ -1,0 +1,46 @@
+using System;
+using Xunit.Sdk;
+
+namespace Xunit.OpenCategories
+{
+    /// <summary>
+    /// Attribute to specify a {{ categoryname }} for a test class or method.
+    /// </summary>
+    /// <remarks>
+    /// This attribute can be applied to both classes and methods, and it supports multiple usages.
+    /// </remarks>
+    [TraitDiscoverer({{ categoryname }}Discoverer.DiscovererTypeName, DiscovererUtil.AssemblyName)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+    public class {{ categoryname }}Attribute : Attribute, ITraitAttribute
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class with a string ID.
+        /// </summary>
+        /// <param name="id">The {{ categoryname }} ID as a string.</param>
+        public {{ categoryname }}Attribute(string id)
+        {
+            Id = id;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class with a long ID.
+        /// </summary>
+        /// <param name="id">The {{ categoryname }} ID as a long.</param>
+        public {{ categoryname }}Attribute(long id)
+        {
+            Id = id.ToString();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{ categoryname }}Attribute"/> class.
+        /// </summary>
+        public {{ categoryname }}Attribute()
+        {
+        }
+
+        /// <summary>
+        /// Gets the {{ categoryname }} ID.
+        /// </summary>
+        public string Id { get; private set; }
+    }
+}

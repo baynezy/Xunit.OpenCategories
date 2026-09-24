@@ -1,13 +1,12 @@
-﻿namespace Xunit.OpenCategories.V3;
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
-/// Attribute to specify that a test is an integration test.
+/// Attribute to categorize a test as an integration test.
 /// </summary>
 /// <remarks>
-/// This attribute can be applied to both classes and methods, and it supports multiple usages.
+/// This is a category-only attribute that applies the "IntegrationTest" category.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-[Obsolete("Use IntegrationTestAttribute from Xunit.OpenCategories instead.")]
 public class IntegrationTestsAttribute : BaseAttribute
 {
     /// <inheritdoc />

@@ -1,45 +1,43 @@
-﻿namespace Xunit.OpenCategories.V3;
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
-/// Attribute to specify multiple services tested within a test class or method.
+/// Attribute to specify multiple service names for a test class or method.
 /// </summary>
-[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method)]
+/// <remarks>
+/// This attribute can be applied to both classes and methods, and it supports multiple usages.
+/// </remarks>
+[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
 public class ServicesAttribute : BaseAttribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServicesAttribute"/> class with Service names.
-    /// At least one service name must be provided.
+    /// Initializes a new instance of the <see cref="ServicesAttribute"/> class with one or more service names.
     /// </summary>
-    /// <param name="names"></param>
-    /// <exception cref="ArgumentException">Thrown if no service names are provided.</exception>
-    public ServicesAttribute(params string[] names)
+    /// <param name="serviceNames">The service names.</param>
+    public ServicesAttribute(params string[] serviceNames)
     {
-        if (names is null || names.Length == 0)
-        {
-            throw new ArgumentException(
-                "Services attribute is used without specifying a service. At least one service name must be provided.", nameof(names));
-        }
-
-        ServiceNames = names;
+        ServiceNames = serviceNames ?? Array.Empty<string>();
     }
 
     /// <summary>
-    /// Gets the names of the Services.
+    /// Gets the service names.
     /// </summary>
     public string[] ServiceNames { get; }
-    
-    /// <inheritdoc />
-    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
-    {
-        AddCategory(traits, "Service");
-    }
 
     /// <inheritdoc />
     protected override void OptionalTraits(List<KeyValuePair<string, string>> traits)
     {
-        foreach (var name in ServiceNames)
+        if (ServiceNames != null)
         {
-            AddOptionalTrait(traits, "Service", name);
+            foreach (var service in ServiceNames)
+            {
+                AddOptionalTrait(traits, "Service", service);
+            }
         }
+    }
+
+    /// <inheritdoc />
+    protected override void MandatoryTraits(List<KeyValuePair<string, string>> traits)
+    {
+        AddCategory(traits, "Service");
     }
 }

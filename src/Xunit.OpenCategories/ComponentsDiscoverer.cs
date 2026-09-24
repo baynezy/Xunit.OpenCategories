@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
@@ -21,17 +22,18 @@ namespace Xunit.OpenCategories
         /// <returns>An enumerable of key-value pairs representing the traits.</returns>
         public IEnumerable<KeyValuePair<string, string>> GetTraits(IAttributeInfo traitAttribute)
         {
-            var names = traitAttribute.GetNamedArgument<string[]>("ComponentNames");
+            var componentNames = traitAttribute.GetNamedArgument<string[]>("ComponentNames");
 
-            yield return new KeyValuePair<string, string>("Category", "Components");
+            yield return new KeyValuePair<string, string>("Category", "Component");
 
-            if (names is null) yield break;
-            
-            foreach (var name in names)
+            if (componentNames != null && componentNames.Any())
             {
-                if (!string.IsNullOrWhiteSpace(name))
+                foreach (var component in componentNames)
                 {
-                    yield return new KeyValuePair<string, string>("Component", name);
+                    if (!string.IsNullOrWhiteSpace(component))
+                    {
+                        yield return new KeyValuePair<string, string>("Component", component);
+                    }
                 }
             }
         }

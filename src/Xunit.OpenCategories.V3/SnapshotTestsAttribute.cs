@@ -1,13 +1,12 @@
-﻿namespace Xunit.OpenCategories.V3;
+namespace Xunit.OpenCategories.V3;
 
 /// <summary>
-/// Attribute to mark a test as a snapshot test.
+/// Attribute to categorize a test as a snapshot test.
 /// </summary>
 /// <remarks>
-/// Snapshot tests are used to verify that the output of a function matches the expected output.
+/// This is a category-only attribute that applies the "SnapshotTest" category.
 /// </remarks>
 [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-[Obsolete("Use SnapshotTestAttribute from Xunit.OpenCategories instead.")]
 public class SnapshotTestsAttribute : BaseAttribute
 {
     /// <inheritdoc />
