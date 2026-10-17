@@ -1,32 +1,32 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
 namespace Xunit.OpenCategories
 {
     /// <summary>
-    /// Discovers the traits for the <see cref="LocalTestAttribute"/>.
+    /// Discovers the traits for the <see cref="{{ categoryname }}Attribute"/>.
     /// </summary>
-    public class LocalTestDiscoverer : ITraitDiscoverer
+    public class {{ categoryname }}Discoverer : ITraitDiscoverer
     {
         /// <summary>
         /// The fully qualified type name of the discoverer.
         /// </summary>
-        internal const string DiscovererTypeName = DiscovererUtil.AssemblyName + "." + nameof(LocalTestDiscoverer);
+        internal const string DiscovererTypeName = DiscovererUtil.AssemblyName + "." + nameof({{ categoryname }}Discoverer);
 
         /// <summary>
         /// Gets the traits for the specified trait attribute.
         /// </summary>
-        /// <param name="traitAttribute">The trait attribute containing the local test information.</param>
+        /// <param name="traitAttribute">The trait attribute containing the {{ categoryname }} information.</param>
         /// <returns>An enumerable of key-value pairs representing the traits.</returns>
         public IEnumerable<KeyValuePair<string, string>> GetTraits(IAttributeInfo traitAttribute)
         {
             var id = traitAttribute.GetNamedArgument<string>("Id");
 
-            yield return new KeyValuePair<string, string>("Category", "LocalTest");
+            yield return new KeyValuePair<string, string>("Category", "{{ categoryname }}");
 
             if (!string.IsNullOrWhiteSpace(id))
-                yield return new KeyValuePair<string, string>("LocalTest", id);
+                yield return new KeyValuePair<string, string>("{{ categoryname }}", id);
         }
     }
 }
